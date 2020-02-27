@@ -1,0 +1,34 @@
+server:
+  port: 9001
+
+# 将网关服务注册到Eureka Server中
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8001/eureka/
+spring:
+  application:
+    name: egobuy-gateway
+
+# 设置请求前缀
+zuul:
+  prefix: /api
+  routes:
+    egobuy-goods-service: /goods/**
+
+# Ribbon超时时间
+ribbon:
+  ConnectTimeout: 2000
+  ReadTimeout: 2500
+  OkToRetryOnAllOperations: true
+  MaxAutoRetries: 1
+  MaxAutoRetriesNextServer: 1
+
+# Hystrix断路触发时间
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000
