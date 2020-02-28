@@ -14,7 +14,7 @@ spring:
 zuul:
   prefix: /api
   routes:
-    egobuy-goods-service: /goods/**
+    egobuy-shop-service: /shop/**
 
 # Ribbon超时时间
 ribbon:

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.igeekhome.egobuygoodsservice.mapper.ItemMapper">
+
+    <resultMap id="itemResultMap" type="com.igeekhome.shop.pojo.TbItem">
+        <id column="id" property="id"></id>
+        <result column="title" property="title"></result>
+        <result column="sell_point" property="sellPoint"></result>
+        <result column="price" property="price"></result>
+        <result column="num" property="num"></result>
+        <result column="barcode" property="barcode"></result>
+        <result column="image" property="image"></result>
+        <result column="status" property="status"></result>
+        <result column="created" property="created"></result>
+        <result column="updated" property="updated"></result>
+        <result column="cid" property="cid"></result>
+        <association property="itemCat" javaType="com.igeekhome.shop.pojo.TbItemCat">
+            <id column="cid" property="id"></id>
+            <result column="parent_id" property="parentId"></result>
+            <result column="name" property="name"></result>
+            <result column="cstatus" property="status"></result>
+            <result column="sort_order" property="sortOrder"></result>
+            <result column="parent_id" property="parentId"></result>
+            <result column="is_parent" property="isParent"></result>
+            <result column="ccreated" property="created"></result>
+            <result column="cupdated" property="updated"></result>
+        </association>
+    </resultMap>
+
+
+    <select id="selectByQuery" parameterType="com.igeekhome.egobuygoodsservice.vo.ItemQueryVo" resultMap="itemResultMap">
+        select ti.id,ti.title,ti.sell_point,ti.price,ti.num,ti.barcode,
+        ti.image,ti.status,ti.created,ti.updated,tic.id as cid,tic.parent_id,tic.name,
+        tic.status as cstatus,tic.sort_order,tic.is_parent,tic.created as ccreated,tic.updated as cupdated
+        from tb_item ti,tb_item_cat tic where ti.cid = tic.id and ti.status != 3
+        <if test="title != null and title != ''">
+            and ti.title like concat('%', #{title}, '%')
+        </if>
+        <if test="sellPoint != null and sellPoint != ''">
+            and ti.sell_point like concat('%', #{sellPoint}, '%')
+        </if>
+        <if test="minPrice != null and minPrice != ''">
+            and ti.price >= #{minPrice}
+        </if>
+        <if test="maxPrice != null and maxPrice != ''">
+            and ti.price &lt;= #{maxPrice}
+        </if>
+    </select>
+
+</mapper>
