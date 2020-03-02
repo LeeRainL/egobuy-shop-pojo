@@ -7,10 +7,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="egobuy-shop-pojo" />
-        <module name="egobuy-registry" />
-        <module name="egobuy-shop-service" />
+        <module name="egobuy-file" />
         <module name="egobuy-common" />
         <module name="egobuy-gateway" />
+        <module name="egobuy-shop-service" />
+        <module name="egobuy-registry" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -22,6 +23,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="egobuy-common" options="-parameters" />
+      <module name="egobuy-file" options="-parameters" />
       <module name="egobuy-gateway" options="-parameters" />
       <module name="egobuy-goods-pojo" options="-parameters" />
       <module name="egobuy-goods-service" options="-parameters" />

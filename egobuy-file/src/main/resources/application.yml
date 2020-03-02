@@ -1,0 +1,17 @@
+server:
+  port: 6868
+spring:
+  application:
+    name: egobuy-file
+  servlet:
+    multipart:
+      max-request-size: 100MB
+      max-file-size: 10MB
+      file-size-threshold: 5MB
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8001/eureka
+  instance:
+    prefer-ip-address: true

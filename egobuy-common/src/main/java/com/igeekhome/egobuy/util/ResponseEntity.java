@@ -64,6 +64,10 @@ public class ResponseEntity {
         return new ResponseEntity(ex.getCode(), ex.getMessage(), null);
     }
 
+    public static ResponseEntity fail(String message) {
+        return new ResponseEntity(FAIL_CODE, message, null);
+    }
+
     public static ResponseEntity build(Integer code, String msg, Object data) {
         return new ResponseEntity(code, msg, data);
     }

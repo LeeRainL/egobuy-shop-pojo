@@ -15,7 +15,7 @@ zuul:
   prefix: /api
   routes:
     egobuy-shop-service: /shop/**
-
+    egobuy-file: /file/**
 # Ribbon超时时间
 ribbon:
   ConnectTimeout: 2000
