@@ -3,15 +3,21 @@ package com.igeekhome.egobuygoodsservice.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.igeekhome.egobuy.util.CustomPageInfo;
+import com.igeekhome.egobuy.util.IDUtil;
+import com.igeekhome.egobuygoodsservice.mapper.ItemDescMapper;
 import com.igeekhome.egobuygoodsservice.mapper.ItemMapper;
 import com.igeekhome.egobuygoodsservice.service.IItemService;
+import com.igeekhome.egobuygoodsservice.vo.ItemAddVo;
 import com.igeekhome.egobuygoodsservice.vo.ItemQueryVo;
 import com.igeekhome.shop.pojo.TbItem;
+import com.igeekhome.shop.pojo.TbItemDesc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 import tk.mybatis.mapper.entity.Example;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -23,6 +29,9 @@ public class ItemServiceImpl implements IItemService {
 
     @Autowired
     private ItemMapper itemMapper;
+
+    @Autowired
+    private ItemDescMapper itemDescMapper;
 
 
     @Override
@@ -71,5 +80,33 @@ public class ItemServiceImpl implements IItemService {
     @Override
     public void update(TbItem tbItem) {
         itemMapper.updateByPrimaryKeySelective(tbItem);
+    }
+
+    @Override
+    @Transactional //对该方法开启事务支持
+    public void addItemAndDesc(ItemAddVo item) {
+        Long id = IDUtil.generateId();
+        TbItem tbItem = new TbItem();
+        tbItem.setId(id);
+        tbItem.setTitle(item.getTitle());
+        tbItem.setSellPoint(item.getSellPoint());
+        tbItem.setPrice(item.getPrice());
+        tbItem.setBarcode(item.getBarcode());
+        tbItem.setCid(item.getCid());
+        tbItem.setImage(item.getImage());
+        tbItem.setNum(item.getNum());
+        //补全item参数，上下架(默认上架)、创建时间、更新时间
+        tbItem.setStatus(1);
+        tbItem.setCreated(new Date());
+        tbItem.setUpdated(tbItem.getCreated());
+        //保存商品信息TbItem（自增长主键返回）
+        itemMapper.insert(tbItem);
+        //构建商品详情对象并保存（补全参数：商品id、创建时间、更新时间）
+        TbItemDesc tbItemDesc = new TbItemDesc();
+        tbItemDesc.setItemId(id);
+        tbItemDesc.setItemDesc(item.getContent());
+        tbItemDesc.setCreated(new Date());
+        tbItemDesc.setUpdated(tbItemDesc.getCreated());
+        itemDescMapper.insert(tbItemDesc);
     }
 }

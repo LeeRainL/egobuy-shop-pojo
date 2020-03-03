@@ -48,6 +48,8 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     @ResponseBody
     public ResponseEntity handleOtherException(Exception ex) {
+        ex.printStackTrace();
+        System.out.println("message===>" + ex.getMessage());
         return ResponseEntity.fail(new CustomException(CustomExceptionType.UNKNOW_ERROR, "未知异常"));
     }
 

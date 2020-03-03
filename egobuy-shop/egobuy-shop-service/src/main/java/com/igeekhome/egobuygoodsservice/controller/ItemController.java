@@ -4,6 +4,7 @@ import com.igeekhome.egobuy.exception.CustomException;
 import com.igeekhome.egobuy.exception.CustomExceptionType;
 import com.igeekhome.egobuy.util.ResponseEntity;
 import com.igeekhome.egobuygoodsservice.service.IItemService;
+import com.igeekhome.egobuygoodsservice.vo.ItemAddVo;
 import com.igeekhome.egobuygoodsservice.vo.ItemQueryVo;
 import com.igeekhome.shop.pojo.TbItem;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,12 @@ public class ItemController {
             throw new CustomException(CustomExceptionType.USER_ERROR, "商品id不能为空");
         }
         itemService.update(tbItem);
+        return ResponseEntity.success();
+    }
+
+    @RequestMapping("/add")
+    public ResponseEntity add(@RequestBody ItemAddVo item) {
+        itemService.addItemAndDesc(item);
         return ResponseEntity.success();
     }
 

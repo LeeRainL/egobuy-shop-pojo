@@ -16,13 +16,14 @@ zuul:
   routes:
     egobuy-shop-service: /shop/**
     egobuy-file: /file/**
+    egobuy-content-service: /cms/**
 # Ribbon超时时间
 ribbon:
-  ConnectTimeout: 2000
-  ReadTimeout: 2500
+  ConnectTimeout: 5000
+  ReadTimeout: 5000
   OkToRetryOnAllOperations: true
-  MaxAutoRetries: 1
-  MaxAutoRetriesNextServer: 1
+  MaxAutoRetries: 0
+  MaxAutoRetriesNextServer: 0
 
 # Hystrix断路触发时间
 hystrix:
@@ -31,4 +32,4 @@ hystrix:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 5000
+            timeoutInMilliseconds: 40000
