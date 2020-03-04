@@ -1,5 +1,8 @@
 package com.igeekhome.egobuy.content.pojo;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Date;
 import java.io.Serializable;
 
@@ -11,7 +14,10 @@ import java.io.Serializable;
  */
 public class TbContent implements Serializable {
     private static final long serialVersionUID = -56996043594324142L;
-    
+
+    //主键回填
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     /**
     * 内容类目ID
@@ -139,4 +145,20 @@ public class TbContent implements Serializable {
         this.updated = updated;
     }
 
+    @Override
+    public String toString() {
+        return "TbContent{" +
+                "id=" + id +
+                ", categoryId=" + categoryId +
+                ", title='" + title + '\'' +
+                ", subTitle='" + subTitle + '\'' +
+                ", titleDesc='" + titleDesc + '\'' +
+                ", url='" + url + '\'' +
+                ", pic='" + pic + '\'' +
+                ", pic2='" + pic2 + '\'' +
+                ", content='" + content + '\'' +
+                ", created=" + created +
+                ", updated=" + updated +
+                '}';
+    }
 }
