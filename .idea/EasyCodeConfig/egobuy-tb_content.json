@@ -81,7 +81,7 @@
   } ],
   "pkColumn" : null,
   "otherColumn" : null,
-  "savePackageName" : "com.igeekhome.egobuy.content",
-  "savePath" : "./egobuy-content/egobuy-content-pojo/src/main/java/com/igeekhome/egobuy/content",
-  "saveModelName" : "egobuy-content-pojo"
+  "savePackageName" : "com.igeekhome.egobuycontentservice",
+  "savePath" : "./egobuy-content/egobuy-content-service/src/main/java/com/igeekhome/egobuycontentservice",
+  "saveModelName" : "egobuy-content-service"
 }

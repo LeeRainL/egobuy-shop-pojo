@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/egobuy-common" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/egobuy-common/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/egobuy-content/egobuy-content-pojo/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/egobuy-content/egobuy-content-service/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/egobuy-content/egobuy-content-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/egobuy-content" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/egobuy-content/egobuy-content-pojo" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/egobuy-content/egobuy-content-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/egobuy-file" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/egobuy-file/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/egobuy-file/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/egobuy-gateway" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/egobuy-gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/egobuy-registry" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/egobuy-registry/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/egobuy-shop" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/egobuy-shop/egobuy-shop-pojo" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/egobuy-shop/egobuy-shop-pojo/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/egobuy-shop/egobuy-shop-service" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/egobuy-shop/egobuy-shop-service/src/main/java" charset="UTF-8" />
   </component>
 </project>
