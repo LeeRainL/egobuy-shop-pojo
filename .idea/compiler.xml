@@ -6,32 +6,35 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="egobuy-common" />
-        <module name="egobuy-content-pojo" />
         <module name="egobuy-content-service" />
-        <module name="egobuy-gateway" />
-        <module name="egobuy-registry" />
-        <module name="egobuy-shop-pojo" />
-        <module name="egobuy-shop-service" />
         <module name="egobuy-upload" />
+        <module name="egobuy-shop-pojo" />
+        <module name="egobuy-content-feign-client" />
+        <module name="egobuy-common" />
+        <module name="egobuy-gateway" />
+        <module name="egobuy-content-pojo" />
+        <module name="egobuy-shop-service" />
+        <module name="egobuy-registry" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="egobuy" target="1.7" />
-      <module name="egobuy-common" target="1.7" />
-      <module name="egobuy-content" target="1.7" />
-      <module name="egobuy-content-pojo" target="1.7" />
-      <module name="egobuy-content-service" target="1.8" />
       <module name="egobuy-file" target="1.8" />
-      <module name="egobuy-gateway" target="1.8" />
       <module name="egobuy-goods-pojo" target="1.7" />
       <module name="egobuy-goods-service" target="1.8" />
       <module name="egobuy-products" target="1.8" />
-      <module name="egobuy-registry" target="1.8" />
-      <module name="egobuy-shop" target="1.7" />
-      <module name="egobuy-shop-pojo" target="1.7" />
-      <module name="egobuy-shop-service" target="1.8" />
-      <module name="egobuy-upload" target="1.8" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="egobuy-common" options="-parameters" />
+      <module name="egobuy-content-feign-client" options="-parameters" />
+      <module name="egobuy-content-pojo" options="-parameters" />
+      <module name="egobuy-content-service" options="-parameters" />
+      <module name="egobuy-gateway" options="-parameters" />
+      <module name="egobuy-registry" options="-parameters" />
+      <module name="egobuy-shop-pojo" options="-parameters" />
+      <module name="egobuy-shop-service" options="-parameters" />
+      <module name="egobuy-upload" options="-parameters" />
+    </option>
   </component>
 </project>

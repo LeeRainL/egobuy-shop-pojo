@@ -16,6 +16,7 @@
   <version>1.0-SNAPSHOT</version>
   <modules>
     <module>egobuy-content-pojo</module>
+      <module>egobuy-content-feign-client</module>
   </modules>
 
   <name>egobuy-content</name>

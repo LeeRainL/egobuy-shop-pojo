@@ -1,1 +1,5 @@
-com\igeekhome\goods\pojo\Good.class
+com\igeekhome\shop\pojo\TbItemCat.class
+com\igeekhome\shop\pojo\TbItemDesc.class
+com\igeekhome\shop\pojo\TbItemParam.class
+com\igeekhome\shop\pojo\TbItem.class
+com\igeekhome\shop\pojo\TbItemParamItem.class

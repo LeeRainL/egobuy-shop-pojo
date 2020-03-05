@@ -31,6 +31,8 @@ public interface TbContentService {
      *
      */
     CustomPageInfo<TbContent> queryByParentId(Long parentId, Integer page, Integer limit);
+
+    List<TbContent> queryByParentId(Long parentId);
     /**
      * 查询多条数据
      *
