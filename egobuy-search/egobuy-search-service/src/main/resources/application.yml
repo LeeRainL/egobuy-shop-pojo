@@ -1,0 +1,21 @@
+
+server:
+  port: 8090
+spring:
+  application:
+    name: egobuy-search-service
+  data:
+    solr:
+      host: http://localhost:8983/solr/mycore
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+  mvc:
+    date-format: yyyy-MM-dd HH:mm:ss
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8001/eureka
+  instance:
+    prefer-ip-address: true
+

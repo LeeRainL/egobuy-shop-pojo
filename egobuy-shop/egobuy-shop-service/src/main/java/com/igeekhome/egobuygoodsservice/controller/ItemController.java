@@ -3,6 +3,7 @@ package com.igeekhome.egobuygoodsservice.controller;
 import com.igeekhome.egobuy.exception.CustomException;
 import com.igeekhome.egobuy.exception.CustomExceptionType;
 import com.igeekhome.egobuy.util.ResponseEntity;
+import com.igeekhome.egobuy.util.ResponseEntityV2;
 import com.igeekhome.egobuygoodsservice.service.IItemService;
 import com.igeekhome.egobuygoodsservice.vo.ItemAddVo;
 import com.igeekhome.egobuygoodsservice.vo.ItemQueryVo;
@@ -10,6 +11,8 @@ import com.igeekhome.shop.pojo.TbItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @author yadonghe
@@ -32,6 +35,12 @@ public class ItemController {
     public ResponseEntity list(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "10") Integer limit, ItemQueryVo query) {
 
         return ResponseEntity.success(itemService.select(page, limit, query));
+    }
+
+    @RequestMapping("/all")
+    public List<TbItem> all() {
+        //return ResponseEntityV2.success(itemService.select());
+        return itemService.select();
     }
 
     @PostMapping("/update")

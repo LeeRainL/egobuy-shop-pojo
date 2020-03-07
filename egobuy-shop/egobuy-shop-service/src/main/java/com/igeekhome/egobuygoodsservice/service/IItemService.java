@@ -18,4 +18,6 @@ public interface IItemService {
     void update(TbItem tbItem);
 
     void addItemAndDesc(ItemAddVo item);
+
+    List<TbItem> select();
 }

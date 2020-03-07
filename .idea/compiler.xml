@@ -7,13 +7,16 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="egobuy-content-service" />
+        <module name="egobuy-search" />
         <module name="egobuy-upload" />
-        <module name="egobuy-shop-pojo" />
-        <module name="egobuy-content-feign-client" />
-        <module name="egobuy-common" />
-        <module name="egobuy-gateway" />
         <module name="egobuy-content-pojo" />
+        <module name="egobuy-shop-feign-clients" />
+        <module name="egobuy-content-feign-client" />
         <module name="egobuy-shop-service" />
+        <module name="egobuy-gateway" />
+        <module name="egobuy-common" />
+        <module name="egobuy-shop-pojo" />
+        <module name="egobuy-search-service" />
         <module name="egobuy-registry" />
       </profile>
     </annotationProcessing>
@@ -32,6 +35,9 @@
       <module name="egobuy-content-service" options="-parameters" />
       <module name="egobuy-gateway" options="-parameters" />
       <module name="egobuy-registry" options="-parameters" />
+      <module name="egobuy-search" options="" />
+      <module name="egobuy-search-service" options="-parameters" />
+      <module name="egobuy-shop-feign-clients" options="" />
       <module name="egobuy-shop-pojo" options="-parameters" />
       <module name="egobuy-shop-service" options="-parameters" />
       <module name="egobuy-upload" options="-parameters" />

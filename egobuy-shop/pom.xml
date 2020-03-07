@@ -19,6 +19,7 @@
     <modules>
         <module>egobuy-shop-pojo</module>
         <module>egobuy-shop-service</module>
+        <module>egobuy-shop-feign-clients</module>
     </modules>
 
 

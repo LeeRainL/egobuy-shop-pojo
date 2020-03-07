@@ -21,6 +21,7 @@
         <module>egobuy-common</module>
       <module>egobuy-shop</module>
       <module>egobuy-content</module>
+      <module>egobuy-search</module>
     </modules>
 
     <name>egobuy</name>

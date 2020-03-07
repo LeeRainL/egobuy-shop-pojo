@@ -10,6 +10,6 @@ import org.springframework.context.annotation.Configuration;
  * @date 2020-02-28 16:02
  */
 @Configuration
-@ComponentScan(basePackages = "com.igeekhome.egobuy")
+@ComponentScan(basePackages = "com.igeekhome.egobuy.exception")
 public class CustomImportPackage {
 }

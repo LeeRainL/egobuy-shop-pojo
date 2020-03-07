@@ -109,4 +109,9 @@ public class ItemServiceImpl implements IItemService {
         tbItemDesc.setUpdated(tbItemDesc.getCreated());
         itemDescMapper.insert(tbItemDesc);
     }
+
+    @Override
+    public List<TbItem> select() {
+        return itemMapper.selectByQuery(null);
+    }
 }

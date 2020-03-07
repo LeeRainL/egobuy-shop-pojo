@@ -12,6 +12,7 @@
         <option value="$PROJECT_DIR$/egobuy-file/pom.xml" />
         <option value="$PROJECT_DIR$/egobuy-content/pom.xml" />
         <option value="$PROJECT_DIR$/egobuy-content/egobuy-content-service/pom.xml" />
+        <option value="$PROJECT_DIR$/egobuy-search/egobuy-search-service/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

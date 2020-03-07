@@ -17,10 +17,11 @@ zuul:
     egobuy-shop-service: /shop/**
     egobuy-file: /file/**
     egobuy-content-service: /cms/**
+    egobuy-search-service: /search/**
 # Ribbon超时时间
 ribbon:
-  ConnectTimeout: 5000
-  ReadTimeout: 5000
+  ConnectTimeout: 20000
+  ReadTimeout: 20000
   OkToRetryOnAllOperations: true
   MaxAutoRetries: 0
   MaxAutoRetriesNextServer: 0
@@ -32,4 +33,4 @@ hystrix:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 40000
+            timeoutInMilliseconds: 80000
