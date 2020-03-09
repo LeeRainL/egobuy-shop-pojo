@@ -1,9 +1,10 @@
-package com.egobuy.egobuysearchservice.pojo;
+package com.egobuy.search.pojo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.apache.solr.client.solrj.beans.Field;
+import org.springframework.util.StringUtils;
 
 /**
  * 写入索引库的实体字段
@@ -24,5 +25,19 @@ public class SearchItem {
     private Long price;
     @Field
     private String image;
+
+
+    //private String[] images;
+
+    public String[] getImages() {
+        if (StringUtils.isEmpty(image)) {
+            return null;
+        }
+        String[] images = image.split(",");
+        if (images != null && images.length > 0) {
+            return images;
+        }
+        return null;
+    }
 
 }

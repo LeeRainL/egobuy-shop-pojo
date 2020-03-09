@@ -15,8 +15,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.Context;
 import tk.mybatis.mapper.entity.Example;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
@@ -32,6 +37,9 @@ public class ItemServiceImpl implements IItemService {
 
     @Autowired
     private ItemDescMapper itemDescMapper;
+
+    @Autowired
+    private TemplateEngine engine;
 
 
     @Override
@@ -108,10 +116,41 @@ public class ItemServiceImpl implements IItemService {
         tbItemDesc.setCreated(new Date());
         tbItemDesc.setUpdated(tbItemDesc.getCreated());
         itemDescMapper.insert(tbItemDesc);
+
+        try {
+            //稍微延迟一会儿，保证页面静态化时，数据能够成功保存到数据库
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        //1.商品数据库保存
+        //新增商品成功后
+        //2.实现该新增的商品页面静态化
+        outPutHTML(id);
+        //3.新增索引
+        //
     }
 
     @Override
     public List<TbItem> select() {
         return itemMapper.selectByQuery(null);
+    }
+
+    @Override
+    public void outPutHTML(Long id) {
+        //1.获取商品、商品详情信息
+        TbItem tbItem = itemMapper.selectByPrimaryKey(id);
+        TbItemDesc tbItemDesc = itemDescMapper.selectByPrimaryKey(id);
+        System.out.println("tbItemDesc===>" + tbItemDesc);
+        //2.输出静态HTML（页面静态化）
+        Context context = new Context();
+        context.setVariable("item", tbItem);
+        context.setVariable("tbItemDesc", tbItemDesc);
+        try {
+            engine.process("item", context, new FileWriter(new File("D:\\htmls\\" + id + ".html")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }

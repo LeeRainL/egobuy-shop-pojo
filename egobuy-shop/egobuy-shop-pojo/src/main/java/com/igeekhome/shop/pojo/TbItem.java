@@ -2,6 +2,7 @@ package com.igeekhome.shop.pojo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.util.StringUtils;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -94,6 +95,14 @@ public class TbItem implements Serializable {
      */
     @Transient
     private TbItemCat itemCat;
+
+    public String[] getImages() {
+        if (StringUtils.isEmpty(this.image)) {
+            return null;
+        }
+        String[] images = this.image.split(",");
+        return images;
+    }
 
 
 }

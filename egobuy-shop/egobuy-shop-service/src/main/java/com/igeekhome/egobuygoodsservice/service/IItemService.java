@@ -20,4 +20,10 @@ public interface IItemService {
     void addItemAndDesc(ItemAddVo item);
 
     List<TbItem> select();
+
+    /**
+     * 根据id查询商品详情并生成静态HTML页面
+     * @param id
+     */
+    void outPutHTML(Long id);
 }

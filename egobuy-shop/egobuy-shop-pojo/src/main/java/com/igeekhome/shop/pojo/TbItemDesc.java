@@ -3,6 +3,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.*;
 
@@ -23,6 +24,7 @@ public class TbItemDesc implements Serializable {
     * 商品ID
     * isNullAble:0
     */
+    @Id
     private Long itemId;
 
     /**
