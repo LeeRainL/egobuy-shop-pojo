@@ -20,4 +20,6 @@ public interface IndexService {
      * @return
      */
     SearchResponseEntity select(String keyword, Integer page, Integer limit);
+
+    void addIndex(Long id);
 }

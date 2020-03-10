@@ -58,5 +58,10 @@ public class ItemController {
         return ResponseEntity.success();
     }
 
+    @RequestMapping("/get/{id}")
+    public TbItem get(@PathVariable("id") Long id) {
+        return itemService.get(id);
+    }
+
 
 }

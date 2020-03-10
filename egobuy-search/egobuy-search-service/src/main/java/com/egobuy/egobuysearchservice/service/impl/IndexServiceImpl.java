@@ -85,4 +85,23 @@ public class IndexServiceImpl implements IndexService {
         }
         return responseEntity;
     }
+
+    @Override
+    public void addIndex(Long id) {
+        //1.根据id查询商品详情
+        TbItem item = itemClients.select(id);
+        //item->searchItem
+        SearchItem searchItem = new SearchItem(item.getId() + "", item.getTitle(), item.getSellPoint(), item.getPrice(), item.getImage());
+        //2.将商品写入到索引库
+        try {
+            solrClient.addBean(searchItem);
+            solrClient.commit();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SolrServerException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

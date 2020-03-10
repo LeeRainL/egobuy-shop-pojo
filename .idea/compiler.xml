@@ -9,16 +9,16 @@
         <module name="egobuy-content-service" />
         <module name="egobuy-registry" />
         <module name="egobuy-shop-feign-clients" />
-        <module name="egobuy-search-feign-client" />
         <module name="egobuy-content-pojo" />
         <module name="egobuy-common" />
-        <module name="egobuy-content-feign-client" />
-        <module name="egobuy-search-pojo" />
-        <module name="egobuy-upload" />
-        <module name="egobuy-shop-pojo" />
+        <module name="egobuy-search-feign-client" />
         <module name="egobuy-shop-service" />
+        <module name="egobuy-content-feign-client" />
+        <module name="egobuy-upload" />
+        <module name="egobuy-search-pojo" />
         <module name="egobuy-search-service" />
         <module name="egobuy-gateway" />
+        <module name="egobuy-shop-pojo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

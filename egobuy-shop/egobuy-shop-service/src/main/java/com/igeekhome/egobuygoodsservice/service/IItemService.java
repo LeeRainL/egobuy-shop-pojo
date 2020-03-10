@@ -26,4 +26,6 @@ public interface IItemService {
      * @param id
      */
     void outPutHTML(Long id);
+
+    TbItem get(Long id);
 }

@@ -12,6 +12,7 @@ import com.igeekhome.egobuygoodsservice.vo.ItemQueryVo;
 import com.igeekhome.shop.pojo.TbItem;
 import com.igeekhome.shop.pojo.TbItemDesc;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.core.JmsMessagingTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
@@ -19,6 +20,8 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 import tk.mybatis.mapper.entity.Example;
 
+import javax.annotation.Resource;
+import javax.jms.Destination;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -40,6 +43,12 @@ public class ItemServiceImpl implements IItemService {
 
     @Autowired
     private TemplateEngine engine;
+
+    @Autowired
+    private JmsMessagingTemplate jmsMessagingTemplate;
+
+    @Resource(name = "itemAddTopic")
+    private Destination topic;
 
 
     @Override
@@ -117,16 +126,14 @@ public class ItemServiceImpl implements IItemService {
         tbItemDesc.setUpdated(tbItemDesc.getCreated());
         itemDescMapper.insert(tbItemDesc);
 
-        try {
-            //稍微延迟一会儿，保证页面静态化时，数据能够成功保存到数据库
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
+
+        //发送消息即可(将id当作消息进行发送)
+        jmsMessagingTemplate.convertAndSend(topic, id + "");
         //1.商品数据库保存
         //新增商品成功后
         //2.实现该新增的商品页面静态化
-        outPutHTML(id);
+        //outPutHTML(id);
         //3.新增索引
         //
     }
@@ -138,6 +145,7 @@ public class ItemServiceImpl implements IItemService {
 
     @Override
     public void outPutHTML(Long id) {
+
         //1.获取商品、商品详情信息
         TbItem tbItem = itemMapper.selectByPrimaryKey(id);
         TbItemDesc tbItemDesc = itemDescMapper.selectByPrimaryKey(id);
@@ -152,5 +160,10 @@ public class ItemServiceImpl implements IItemService {
             e.printStackTrace();
         }
 
+    }
+
+    @Override
+    public TbItem get(Long id) {
+        return itemMapper.selectByPrimaryKey(id);
     }
 }
